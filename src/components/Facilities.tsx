@@ -37,7 +37,11 @@ export default function Facilities() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
           >
-            <Link href="/gallery" className="bg-gray-900 text-white px-8 py-4 rounded-full font-bold hover:bg-primary transition-colors duration-300 shadow-lg">
+            <Link 
+              href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" 
+              target="_blank"
+              className="bg-gray-900 text-white px-8 py-4 rounded-full font-bold hover:bg-primary transition-colors duration-300 shadow-lg"
+            >
               Take a Virtual Tour
             </Link>
           </motion.div>
