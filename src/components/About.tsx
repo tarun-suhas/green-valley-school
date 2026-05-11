@@ -36,7 +36,7 @@ export default function About() {
           >
             <div className="rounded-3xl overflow-hidden shadow-2xl">
               <img 
-                src="/images/about-school.png" 
+                src="/images/about-school.jpg" 
                 alt="School Building" 
                 className="w-full h-full object-cover"
               />

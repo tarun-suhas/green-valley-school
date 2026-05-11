@@ -11,7 +11,7 @@ export default function Hero() {
       {/* Background with Overlay */}
       <div 
         className="absolute inset-0 bg-cover bg-center transition-transform duration-1000 scale-105 hover:scale-100"
-        style={{ backgroundImage: "url('/images/hero.png')" }}
+        style={{ backgroundImage: "url('/images/hero.jpg')" }}
       >
         <div className="absolute inset-0 bg-black/60" />
       </div>

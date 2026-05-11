@@ -6,7 +6,7 @@ export default function Gallery() {
   const images = [
     { url: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&q=80", title: "Yoga Session", category: "Sports" },
     { url: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&q=80", title: "Science Lab", category: "Academic" },
-    { url: "/images/art-class.png", title: "Art Class", category: "Creative" },
+    { url: "/images/art-class.jpg", title: "Art Class", category: "Creative" },
     { url: "https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&q=80", title: "Classroom", category: "Academic" },
     { url: "https://images.unsplash.com/photo-1511632765486-a01980e01a18?auto=format&fit=crop&q=80", title: "Annual Day", category: "Event" },
     { url: "https://images.unsplash.com/photo-1588072432836-e10032774350?auto=format&fit=crop&q=80", title: "Library", category: "Academic" },
