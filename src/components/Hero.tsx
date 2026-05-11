@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Link from "next/link";
 import { ArrowRight, Phone } from "lucide-react";
 import { schoolData } from "@/data/schoolData";
 
@@ -10,7 +11,7 @@ export default function Hero() {
       {/* Background with Overlay */}
       <div 
         className="absolute inset-0 bg-cover bg-center transition-transform duration-1000 scale-105 hover:scale-100"
-        style={{ backgroundImage: "url('https://images.unsplash.com/photo-1546410531-bb4caa6b424d?auto=format&fit=crop&q=80')" }}
+        style={{ backgroundImage: "url('/images/hero.png')" }}
       >
         <div className="absolute inset-0 bg-black/60" />
       </div>
@@ -33,22 +34,26 @@ export default function Hero() {
           </p>
           
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="bg-primary hover:bg-primary-dark text-white px-10 py-4 rounded-full font-bold text-lg shadow-2xl flex items-center gap-2 group transition-all"
-            >
-              Apply Now
-              <ArrowRight className="group-hover:translate-x-1 transition-transform" />
-            </motion.button>
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="bg-white hover:bg-gray-100 text-gray-900 px-10 py-4 rounded-full font-bold text-lg shadow-2xl flex items-center gap-2 transition-all"
-            >
-              <Phone size={20} className="text-primary" />
-              Contact Us
-            </motion.button>
+            <Link href="/admissions">
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="bg-primary hover:bg-primary-dark text-white px-10 py-4 rounded-full font-bold text-lg shadow-2xl flex items-center gap-2 group transition-all"
+              >
+                Apply Now
+                <ArrowRight className="group-hover:translate-x-1 transition-transform" />
+              </motion.button>
+            </Link>
+            <Link href="/contact">
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="bg-white hover:bg-gray-100 text-gray-900 px-10 py-4 rounded-full font-bold text-lg shadow-2xl flex items-center gap-2 transition-all"
+              >
+                <Phone size={20} className="text-primary" />
+                Contact Us
+              </motion.button>
+            </Link>
           </div>
         </motion.div>
       </div>

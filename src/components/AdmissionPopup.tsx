@@ -15,7 +15,13 @@ export default function AdmissionPopup() {
       }
     }, 5000);
 
-    return () => clearTimeout(timer);
+    const handleOpen = () => setIsVisible(true);
+    window.addEventListener("open-admission-modal", handleOpen);
+
+    return () => {
+      clearTimeout(timer);
+      window.removeEventListener("open-admission-modal", handleOpen);
+    };
   }, []);
 
   const handleClose = () => {
@@ -64,9 +70,26 @@ export default function AdmissionPopup() {
                 <h4 className="text-2xl font-bold text-gray-900">Get All Details</h4>
               </div>
 
-              <form className="space-y-4" onSubmit={(e) => { e.preventDefault(); handleClose(); }}>
+              <form className="space-y-4" onSubmit={(e) => { 
+                e.preventDefault(); 
+                const formData = new FormData(e.currentTarget);
+                const student = formData.get("student");
+                const parent = formData.get("parent");
+                const phone = formData.get("phone");
+                const grade = formData.get("grade");
+                
+                const msg = encodeURIComponent(`Hello! I would like to enquire about admission for:
+- Student Name: ${student}
+- Parent Name: ${parent}
+- Phone: ${phone}
+- Class: ${grade}`);
+                
+                window.open(`https://wa.me/919876543210?text=${msg}`, '_blank');
+                handleClose(); 
+              }}>
                 <div>
                   <input 
+                    name="student"
                     type="text" 
                     placeholder="Student Name" 
                     required
@@ -75,6 +98,7 @@ export default function AdmissionPopup() {
                 </div>
                 <div>
                   <input 
+                    name="parent"
                     type="text" 
                     placeholder="Parent Name" 
                     required
@@ -83,6 +107,7 @@ export default function AdmissionPopup() {
                 </div>
                 <div>
                   <input 
+                    name="phone"
                     type="tel" 
                     placeholder="Phone Number" 
                     required
@@ -91,6 +116,7 @@ export default function AdmissionPopup() {
                 </div>
                 <div>
                   <select 
+                    name="grade"
                     required
                     className="w-full bg-gray-50 border border-gray-200 rounded-2xl px-6 py-3 text-sm focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all text-gray-500"
                   >

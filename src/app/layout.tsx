@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import { Inter, Outfit } from "next/font/google";
 import "./globals.css";
+import FloatingWhatsApp from "@/components/FloatingWhatsApp";
+import FloatingChatbot from "@/components/FloatingChatbot";
+import AdmissionPopup from "@/components/AdmissionPopup";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -24,11 +27,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="scroll-smooth">
+    <html lang="en" className="scroll-smooth" suppressHydrationWarning>
       <body
         className={`${inter.variable} ${outfit.variable} antialiased font-sans`}
       >
         {children}
+        <FloatingWhatsApp />
+        <FloatingChatbot />
+        <AdmissionPopup />
       </body>
     </html>
   );

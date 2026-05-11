@@ -13,13 +13,12 @@ export default function EarlyAdmission() {
   });
 
   useEffect(() => {
-    // Set target date (30 days from now)
-    const targetDate = new Date();
-    targetDate.setDate(targetDate.getDate() + 30);
+    // Fixed target date: June 10, 2026
+    const targetDate = new Date("2026-06-10T00:00:00").getTime();
 
     const timer = setInterval(() => {
       const now = new Date().getTime();
-      const distance = targetDate.getTime() - now;
+      const distance = targetDate - now;
 
       setTimeLeft({
         days: Math.floor(distance / (1000 * 60 * 60 * 24)),
@@ -92,7 +91,12 @@ export default function EarlyAdmission() {
                     </li>
                   ))}
                 </ul>
-                <button className="w-full bg-primary text-white py-4 rounded-xl font-bold hover:bg-primary-dark transition-all flex items-center justify-center gap-2 group">
+                <button 
+                  onClick={() => {
+                    window.dispatchEvent(new CustomEvent("open-admission-modal"));
+                  }}
+                  className="w-full bg-primary text-white py-4 rounded-xl font-bold hover:bg-primary-dark transition-all flex items-center justify-center gap-2 group"
+                >
                   Claim This Offer <ArrowRight className="group-hover:translate-x-1 transition-transform" />
                 </button>
               </motion.div>

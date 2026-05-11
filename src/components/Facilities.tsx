@@ -1,14 +1,15 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Monitor, Cpu, LibraryBig, Dribbble, Bus, ShieldCheck } from "lucide-react";
+import Link from "next/link";
+import { Monitor, Cpu, LibraryBig, Trophy, Bus, ShieldCheck } from "lucide-react";
 import { schoolData } from "@/data/schoolData";
 
 const iconMap = {
   Monitor: Monitor,
   Cpu: Cpu,
   LibraryBig: LibraryBig,
-  Dribbble: Dribbble,
+  Trophy: Trophy,
   Bus: Bus,
   ShieldCheck: ShieldCheck,
 };
@@ -36,9 +37,9 @@ export default function Facilities() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
           >
-            <button className="bg-gray-900 text-white px-8 py-4 rounded-full font-bold hover:bg-primary transition-colors duration-300 shadow-lg">
+            <Link href="/gallery" className="bg-gray-900 text-white px-8 py-4 rounded-full font-bold hover:bg-primary transition-colors duration-300 shadow-lg">
               Take a Virtual Tour
-            </button>
+            </Link>
           </motion.div>
         </div>
 

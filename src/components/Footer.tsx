@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Facebook, Instagram, Twitter, Youtube, GraduationCap } from "lucide-react";
+import { Globe, Camera, Send, Play, GraduationCap } from "lucide-react";
 import { schoolData } from "@/data/schoolData";
 
 export default function Footer() {
@@ -23,7 +23,7 @@ export default function Footer() {
               Empowering students to achieve academic excellence and personal growth through a holistic and innovative approach to education.
             </p>
             <div className="flex gap-4">
-              {[Facebook, Instagram, Twitter, Youtube].map((Icon, i) => (
+              {[Globe, Camera, Send, Play].map((Icon, i) => (
                 <a 
                   key={i} 
                   href="#" 
@@ -39,13 +39,11 @@ export default function Footer() {
           <div>
             <h4 className="text-xl font-bold mb-8 text-white">Quick Links</h4>
             <ul className="space-y-4">
-              {["About Us", "Our Programs", "Campus Life", "Admissions", "Contact Us", "Privacy Policy"].map((link) => (
-                <li key={link}>
-                  <Link href="#" className="text-gray-400 hover:text-primary hover:pl-2 transition-all">
-                    {link}
-                  </Link>
-                </li>
-              ))}
+              <li><Link href="/about" className="text-gray-400 hover:text-primary hover:pl-2 transition-all">About Us</Link></li>
+              <li><Link href="/admissions" className="text-gray-400 hover:text-primary hover:pl-2 transition-all">Admissions</Link></li>
+              <li><Link href="/#classes" className="text-gray-400 hover:text-primary hover:pl-2 transition-all">Our Programs</Link></li>
+              <li><Link href="/#facilities" className="text-gray-400 hover:text-primary hover:pl-2 transition-all">Campus Life</Link></li>
+              <li><Link href="/contact" className="text-gray-400 hover:text-primary hover:pl-2 transition-all">Contact Us</Link></li>
             </ul>
           </div>
 
@@ -53,13 +51,16 @@ export default function Footer() {
           <div>
             <h4 className="text-xl font-bold mb-8 text-white">Academics</h4>
             <ul className="space-y-4">
-              {schoolData.classes.map((cls) => (
-                <li key={cls.title}>
-                  <Link href="#" className="text-gray-400 hover:text-primary hover:pl-2 transition-all">
-                    {cls.title}
-                  </Link>
-                </li>
-              ))}
+              {schoolData.classes.map((cls) => {
+                const slug = cls.title.toLowerCase().replace(/\s+/g, "-");
+                return (
+                  <li key={cls.title}>
+                    <Link href={`/academics/${slug}`} className="text-gray-400 hover:text-primary hover:pl-2 transition-all">
+                      {cls.title}
+                    </Link>
+                  </li>
+                );
+              })}
             </ul>
           </div>
 

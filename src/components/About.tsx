@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Link from "next/link";
 import { Target, Eye, Quote } from "lucide-react";
 
 export default function About() {
@@ -22,9 +23,9 @@ export default function About() {
             <p className="text-gray-600 text-lg leading-relaxed mb-8">
               Founded on the principles of academic excellence and holistic development, Green Valley International School has been a beacon of quality education for over two decades. We believe in nurturing individual potential through a curriculum that balances tradition with innovation.
             </p>
-            <button className="text-primary font-bold flex items-center gap-2 hover:gap-3 transition-all border-b-2 border-primary pb-1">
+            <Link href="/about" className="text-primary font-bold flex items-center gap-2 hover:gap-3 transition-all border-b-2 border-primary pb-1">
               Learn More About Our Heritage
-            </button>
+            </Link>
           </motion.div>
           
           <motion.div 
@@ -35,7 +36,7 @@ export default function About() {
           >
             <div className="rounded-3xl overflow-hidden shadow-2xl">
               <img 
-                src="https://images.unsplash.com/photo-1523050335102-c6744729ea2a?auto=format&fit=crop&q=80" 
+                src="/images/about-school.png" 
                 alt="School Building" 
                 className="w-full h-full object-cover"
               />

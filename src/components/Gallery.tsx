@@ -1,13 +1,12 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Plus } from "lucide-react";
 
 export default function Gallery() {
   const images = [
     { url: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&q=80", title: "Yoga Session", category: "Sports" },
     { url: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&q=80", title: "Science Lab", category: "Academic" },
-    { url: "https://images.unsplash.com/photo-1577891721396-22c5a3e73d99?auto=format&fit=crop&q=80", title: "Art Class", category: "Creative" },
+    { url: "/images/art-class.png", title: "Art Class", category: "Creative" },
     { url: "https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&q=80", title: "Classroom", category: "Academic" },
     { url: "https://images.unsplash.com/photo-1511632765486-a01980e01a18?auto=format&fit=crop&q=80", title: "Annual Day", category: "Event" },
     { url: "https://images.unsplash.com/photo-1588072432836-e10032774350?auto=format&fit=crop&q=80", title: "Library", category: "Academic" },
@@ -46,9 +45,6 @@ export default function Gallery() {
                 <h3 className="text-white text-2xl font-bold transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 delay-75">
                   {image.title}
                 </h3>
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-16 bg-white rounded-full flex items-center justify-center scale-0 group-hover:scale-100 transition-transform duration-500 delay-150">
-                  <Plus className="text-primary" size={32} />
-                </div>
               </div>
             </motion.div>
           ))}

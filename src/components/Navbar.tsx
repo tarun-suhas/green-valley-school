@@ -2,13 +2,16 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { Menu, X, Phone } from "lucide-react";
+import { usePathname } from "next/navigation";
+import { Menu, X } from "lucide-react";
 import { schoolData } from "@/data/schoolData";
 import { cn } from "@/lib/utils";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const pathname = usePathname();
+  const isHomePage = pathname === "/";
 
   useEffect(() => {
     const handleScroll = () => {
@@ -19,19 +22,19 @@ export default function Navbar() {
   }, []);
 
   const navLinks = [
-    { name: "Home", href: "#" },
-    { name: "About", href: "#about" },
-    { name: "Classes", href: "#classes" },
-    { name: "Facilities", href: "#facilities" },
-    { name: "Gallery", href: "#gallery" },
-    { name: "Contact", href: "#contact" },
+    { name: "Home", href: "/" },
+    { name: "About", href: "/about" },
+    { name: "Admissions", href: "/admissions" },
+    { name: "Classes", href: "/#classes" },
+    { name: "Facilities", href: "/#facilities" },
+    { name: "Contact", href: "/contact" },
   ];
 
   return (
     <nav
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
-        isScrolled
+        isScrolled || !isHomePage
           ? "bg-white/90 backdrop-blur-md shadow-md py-3"
           : "bg-transparent py-5"
       )}
@@ -44,7 +47,7 @@ export default function Navbar() {
           <span
             className={cn(
               "font-bold text-xl tracking-tight",
-              isScrolled ? "text-gray-900" : "text-white"
+              isScrolled || !isHomePage ? "text-gray-900" : "text-white"
             )}
           >
             {schoolData.name.split(" ")[0]} <span className="text-primary">Valley</span>
@@ -59,17 +62,16 @@ export default function Navbar() {
               href={link.href}
               className={cn(
                 "text-sm font-medium transition-colors hover:text-primary",
-                isScrolled ? "text-gray-600" : "text-white/90"
+                isScrolled || !isHomePage ? "text-gray-600" : "text-white/90"
               )}
             >
               {link.name}
             </Link>
           ))}
           <Link
-            href="#contact"
-            className="bg-primary hover:bg-primary-dark text-white px-5 py-2 rounded-full text-sm font-semibold transition-all transform hover:scale-105 flex items-center gap-2"
+            href="/admissions"
+            className="bg-primary hover:bg-primary-dark text-white px-8 py-3 rounded-full text-sm font-bold transition-all transform hover:scale-105"
           >
-            <Phone size={16} />
             Apply Now
           </Link>
         </div>
@@ -78,7 +80,7 @@ export default function Navbar() {
         <button
           className={cn(
             "md:hidden p-2 rounded-lg",
-            isScrolled ? "text-gray-900" : "text-white"
+            isScrolled || !isHomePage ? "text-gray-900" : "text-white"
           )}
           onClick={() => setIsOpen(!isOpen)}
         >

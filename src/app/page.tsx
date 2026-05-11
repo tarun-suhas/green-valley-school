@@ -10,9 +10,6 @@ import Testimonials from "@/components/Testimonials";
 import Contact from "@/components/Contact";
 import Map from "@/components/Map";
 import Footer from "@/components/Footer";
-import FloatingWhatsApp from "@/components/FloatingWhatsApp";
-import FloatingChatbot from "@/components/FloatingChatbot";
-import AdmissionPopup from "@/components/AdmissionPopup";
 
 export default function Home() {
   return (
@@ -29,11 +26,6 @@ export default function Home() {
       <Contact />
       <Map />
       <Footer />
-      
-      {/* Floating Elements */}
-      <FloatingWhatsApp />
-      <FloatingChatbot />
-      <AdmissionPopup />
     </main>
   );
 }

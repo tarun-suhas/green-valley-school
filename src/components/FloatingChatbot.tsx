@@ -58,9 +58,15 @@ export default function FloatingChatbot() {
         animate={{ scale: 1, opacity: 1 }}
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
-        className="fixed bottom-24 right-6 z-50 w-16 h-16 bg-primary rounded-full flex items-center justify-center shadow-2xl text-white hover:bg-primary-dark transition-colors"
+        className="fixed bottom-6 left-6 z-50 w-16 h-16 bg-primary rounded-full flex items-center justify-center shadow-2xl text-white hover:bg-primary-dark transition-colors"
       >
         {isOpen ? <X size={28} /> : <MessageSquare size={28} fill="white" />}
+        {!isOpen && (
+          <span className="absolute top-0 right-0 flex h-5 w-5">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75"></span>
+            <span className="relative inline-flex rounded-full h-5 w-5 bg-white text-primary text-[10px] font-bold items-center justify-center">1</span>
+          </span>
+        )}
       </motion.button>
 
       {/* Chat Popup */}
@@ -70,7 +76,7 @@ export default function FloatingChatbot() {
             initial={{ opacity: 0, y: 100, scale: 0.8 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 100, scale: 0.8 }}
-            className="fixed bottom-44 right-6 z-50 w-[350px] md:w-[400px] bg-white rounded-[2rem] shadow-2xl border border-gray-100 overflow-hidden"
+            className="fixed bottom-24 left-6 z-50 w-[350px] md:w-[400px] bg-white rounded-[2rem] shadow-2xl border border-gray-100 overflow-hidden"
           >
             {/* Header */}
             <div className="bg-primary p-6 flex items-center gap-4">

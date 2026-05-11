@@ -58,11 +58,29 @@ export default function Contact() {
               viewport={{ once: true }}
               className="bg-gray-50 rounded-[3rem] p-8 md:p-12 border border-gray-100 shadow-sm"
             >
-              <form className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <form className="grid grid-cols-1 md:grid-cols-2 gap-6" onSubmit={(e) => {
+                e.preventDefault();
+                const formData = new FormData(e.currentTarget);
+                const name = formData.get("name");
+                const email = formData.get("email");
+                const subject = formData.get("subject");
+                const message = formData.get("message");
+                
+                const msg = encodeURIComponent(`Hello! I have a query:
+- Name: ${name}
+- Email: ${email}
+- Subject: ${subject}
+- Message: ${message}`);
+                
+                window.open(`https://wa.me/919876543210?text=${msg}`, '_blank');
+                (e.target as HTMLFormElement).reset();
+              }}>
                 <div className="space-y-2">
                   <label className="text-sm font-bold text-gray-700 ml-2">Your Name</label>
                   <input 
+                    name="name"
                     type="text" 
+                    required
                     placeholder="Enter your name" 
                     className="w-full bg-white border border-gray-200 rounded-2xl px-6 py-4 focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all"
                   />
@@ -70,7 +88,9 @@ export default function Contact() {
                 <div className="space-y-2">
                   <label className="text-sm font-bold text-gray-700 ml-2">Email Address</label>
                   <input 
+                    name="email"
                     type="email" 
+                    required
                     placeholder="Enter your email" 
                     className="w-full bg-white border border-gray-200 rounded-2xl px-6 py-4 focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all"
                   />
@@ -78,7 +98,9 @@ export default function Contact() {
                 <div className="space-y-2 md:col-span-2">
                   <label className="text-sm font-bold text-gray-700 ml-2">Subject</label>
                   <input 
+                    name="subject"
                     type="text" 
+                    required
                     placeholder="How can we help?" 
                     className="w-full bg-white border border-gray-200 rounded-2xl px-6 py-4 focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all"
                   />
@@ -86,13 +108,15 @@ export default function Contact() {
                 <div className="space-y-2 md:col-span-2">
                   <label className="text-sm font-bold text-gray-700 ml-2">Message</label>
                   <textarea 
+                    name="message"
                     rows={5} 
+                    required
                     placeholder="Type your message here..." 
                     className="w-full bg-white border border-gray-200 rounded-2xl px-6 py-4 focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all resize-none"
                   ></textarea>
                 </div>
                 <div className="md:col-span-2 mt-4">
-                  <button className="w-full md:w-auto bg-primary text-white px-12 py-5 rounded-2xl font-bold flex items-center justify-center gap-3 hover:bg-primary-dark transition-all shadow-lg shadow-primary/20 group">
+                  <button type="submit" className="w-full md:w-auto bg-primary text-white px-12 py-5 rounded-2xl font-bold flex items-center justify-center gap-3 hover:bg-primary-dark transition-all shadow-lg shadow-primary/20 group">
                     Send Message <Send size={20} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
                   </button>
                 </div>

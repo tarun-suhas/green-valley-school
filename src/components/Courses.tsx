@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Link from "next/link";
 import { Baby, BookOpen, GraduationCap, Award, ChevronRight } from "lucide-react";
 import { schoolData } from "@/data/schoolData";
 
@@ -48,9 +49,12 @@ export default function Courses() {
                 <p className="text-gray-500 mb-8 leading-relaxed">
                   {cls.description}
                 </p>
-                <button className="flex items-center gap-2 mx-auto font-bold text-primary opacity-0 group-hover:opacity-100 transition-opacity translate-y-2 group-hover:translate-y-0 duration-300">
+                <Link 
+                  href={`/academics/${cls.title.toLowerCase().replace(/\s+/g, "-")}`} 
+                  className="flex items-center gap-2 mx-auto font-bold text-primary opacity-0 group-hover:opacity-100 transition-opacity translate-y-2 group-hover:translate-y-0 duration-300"
+                >
                   View Details <ChevronRight size={18} />
-                </button>
+                </Link>
                 
                 {/* Decorative circle */}
                 <div className="absolute -top-10 -right-10 w-24 h-24 bg-primary/5 rounded-full blur-2xl group-hover:bg-primary/10 transition-colors" />

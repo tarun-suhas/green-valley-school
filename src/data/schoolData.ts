@@ -40,7 +40,7 @@ export const schoolData = {
     { title: "Smart Classrooms", icon: "Monitor" },
     { title: "Computer Labs", icon: "Cpu" },
     { title: "Library", icon: "LibraryBig" },
-    { title: "Playground", icon: "Dribbble" },
+    { title: "Playground", icon: "Trophy" },
     { title: "Transport", icon: "Bus" },
     { title: "CCTV Security", icon: "ShieldCheck" },
   ],
